@@ -1,0 +1,39 @@
+docker run hello-world
+docker run ubuntu sleep 1d
+docker run dockersamples/static-site
+docker run -d -p 
+
+
+O conceito que garante o isolamento entre o SO e os containers é o NAMESPACE, sendo os principais:
+    ° PID -> Provê o isolamento dos processos rodando dentro do containers
+    ° NET -> Provê isolamento das interfaces de rede
+    ° IPC -> Provê isolamento da comunicação entre processos e memória compartilhada
+    ° MNT -> Provê isolamento do sistema de arquivos / pontos de montagem
+    ° UTS -> Provê isolamento do kernel. Age como se o container fosse outro host
+
+Para definir questões relacionadas a consumo existe o conceito CGROUP
+
+# -d <>  Para não travar o terminal em uso
+# -p <> Portas
+
+docker pull [image] <> Baixa a imagem
+docker run  [image] <> Baixa a imagem e executa o container  #Também aceita o -it
+docker stop  [id] ou [name] <> Interrompe um container em execução (É como se matasse o container) 
+docker start [id] ou [name] <> Reinicia um container stopado (Não exclui)
+docker rm [id] ou [name] <> Remove um container stopado
+docker pause [id] ou [name] <> Pausa um container em execução (Ainda está ativo, apenas pausado)
+docker unpause [id] ou [name] <> Despausa um container em execução
+docker ps <> Mostra os containers em execução
+docker ps -a <> Mostra os containers em execução e os que foram parados
+docker cointainer ls <> Mostra os containers em execução
+docker cointainer ls -a <> Mostra os containers em execução e os que foram parados
+docker exec -it [id] ou [image] bash <> Abre um terminal que está dentro do container
+        exit dentro do terminal para sair
+docker rm [id] ou [name] --force <> Remove um container que está executado e ativo
+        docker stop [] >>
+        >> docker rm []
+docker run -P [image] <> Mapeia portas "automaticamente"
+docker run -p 8080:80 [image] <> Mapeia portas manualmente
+        8080:80  --- (host:container)
+docker port [id] ou [name] <> Mostra o mapeamento
+
